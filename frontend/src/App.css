@@ -1,0 +1,162 @@
+button {
+    cursor: pointer;
+    padding: 10px 20px;
+    background-color: #C791FF;
+    font-size: 20px;
+    border-radius: 12px;
+}
+
+body, html {
+    margin: 0;
+    background-color: rgb(225, 196, 255);
+    font-size: 20px;
+}
+
+.home-wrapper {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.home-container {
+    width: 60%;
+    height: 60%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.home-header h1 {
+  font-size: 48px;
+}
+
+.home-header p {
+  font-size: 24px;
+}
+
+.button-container {
+    margin: 10%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.button-container button {
+    min-width: 200px;
+    min-height: 50px;
+}
+
+#play-button {
+    background-color: cornflowerblue;
+}
+
+#settings-button {
+    background-color: red;
+}
+
+.quiz-container {
+    position: relative;
+    padding: 20px;
+}
+
+.quit-button {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: larger;
+}
+
+.results-container {
+    padding: 20px;
+}
+
+.home-button {
+    margin-right: 10px;
+}
+
+.review-container {
+    padding:20px;
+}
+
+.review-choices {
+    list-style: none;
+}
+
+.settings-container {
+    padding: 20px;
+}
+
+.settings-options-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.difficulty-button-group {
+  display: flex;
+  gap: 10px;
+  margin-top: 5px;
+}
+
+.toggle-button {
+  background-color: #eee;
+  border: 2px solid #ccc;
+  padding: 10px 20px;
+  font-weight: bold;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s, border-color 0.2s, color 0.2s;
+}
+
+.toggle-button:hover {
+  background-color: #ddd;
+}
+
+.toggle-button.selected {
+  background-color: #007bff;
+  border-color: #007bff;
+  color: white;
+}
+
+.error-text {
+  color: red;
+  font-size: 0.9rem;
+}
+
+.save-settings {
+    margin-top: 20px;
+}
+
+.noti-text {
+    justify-content: center;
+    display: flex;
+    color: blue;
+    animation: fadeIn 0.5s ease-out;
+    position: absolute;
+    width: 100%;
+    text-align: center;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+#settings-home {
+    margin-top: 30px;
+}
+
+.credits {
+    display: flex;
+    position: absolute;
+    bottom: 20px;
+}
