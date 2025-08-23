@@ -20,7 +20,6 @@ function App() {
         const parsed = JSON.parse(saved);
         if (JSON.stringify(parsed) !== JSON.stringify(quizSettings)){
           setQuizSettings(parsed);
-          console.log("1: ",quizSettings);
         }
       }
       fetchQuestions();

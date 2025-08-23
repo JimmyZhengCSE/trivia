@@ -5,7 +5,7 @@ import random
 import os
 
 app = Flask(__name__)
-CORS(app)
+CORS(app, origins=[os.getenv('FRONTEND_URL')])
 
 @app.route("/api/quiz", methods=['POST', 'GET'])
 def quiz():
