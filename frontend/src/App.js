@@ -28,7 +28,7 @@ function App() {
   }, [screen, quizSettings]);
 
   const fetchQuestions = () => {    
-    let url = 'http://localhost:8000/api/quiz';
+    const url = process.env.REACT_APP_API_URL;
     let options = {
       method: 'GET',
     };
