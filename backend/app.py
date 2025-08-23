@@ -5,10 +5,17 @@ import random
 import os
 
 app = Flask(__name__)
-CORS(app, origins=[os.getenv('FRONTEND_URL')])
+CORS(app, origins=[os.getenv('FRONTEND_URL')], supports_credentials=True)
 
 @app.route("/api/quiz", methods=['POST', 'GET'])
 def quiz():
+    if request.method == 'OPTIONS':
+        response = jsonify({'message': 'OK'})
+        response = jsonify({'message': 'OK'})
+        response.headers.add('Access-Control-Allow-Origin', os.getenv('FRONTEND_URL'))
+        response.headers.add('Access-Control-Allow-Methods', 'GET, POST, OPTIONS')
+        response.headers.add('Access-Control-Allow-Headers', 'Content-Type')
+        return response
     try:
         params = {}
         if request.method == 'POST':
