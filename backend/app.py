@@ -11,7 +11,6 @@ CORS(app, origins=[os.getenv('FRONTEND_URL')], supports_credentials=True)
 def quiz():
     if request.method == 'OPTIONS':
         response = jsonify({'message': 'OK'})
-        response = jsonify({'message': 'OK'})
         response.headers.add('Access-Control-Allow-Origin', os.getenv('FRONTEND_URL'))
         response.headers.add('Access-Control-Allow-Methods', 'GET, POST, OPTIONS')
         response.headers.add('Access-Control-Allow-Headers', 'Content-Type')
