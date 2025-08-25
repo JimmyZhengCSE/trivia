@@ -13,39 +13,64 @@ function App() {
     return saved ? JSON.parse(saved): null;
   });
 
+  // Fetch questions on first mount
   useEffect(() => {
-    if (screen == 'home') {
+    fetchQuestions();
+  }, [])
+
+  useEffect(() => {
+    if (screen === 'home') {
       const saved = sessionStorage.getItem("quizSettings");
       if (saved) {
         const parsed = JSON.parse(saved);
         if (JSON.stringify(parsed) !== JSON.stringify(quizSettings)){
           setQuizSettings(parsed);
         }
+        else {
+          fetchQuestions(quizSettings);
+        }
       }
-      fetchQuestions();
+      else {
+        fetchQuestions(null);
+      }
     }
-  }, [screen, quizSettings]);
+  }, [screen]);
 
-  const fetchQuestions = () => {    
-    const url = process.env.REACT_APP_API_URL;
-    let options = {
-      method: 'GET',
-    };
-
-    if (quizSettings) {
-      options.method = 'POST';
-      options.headers = {
-        'Content-Type': 'application/json',
-      };
-      options.body = JSON.stringify(quizSettings)
+  useEffect(() => {
+    if (screen === 'home' && quizSettings) {
+      fetchQuestions(quizSettings);
     }
-    fetch(url, options)
-      .then((res) => res.json())
-      .then((data) => setQuestions(data))
-      .catch((err) => {
+  }, [quizSettings])
+
+  const fetchQuestions = (settings) => {
+    let url = 'https://the-trivia-api.com/v2/questions';
+
+    if (settings) {
+      const params = new URLSearchParams({
+        limit: settings.limit,
+        difficulties: settings.difficulties.map(d => d.toLowerCase()).join(','),
+      });
+      url += '?' + params.toString();
+    }
+
+    fetch(url)
+      .then(res => res.json())
+      .then(data => {
+        const scrambleQs = data.map(q => {
+          const choices = [...q.incorrectAnswers, q.correctAnswer];
+          return {
+            question: q.question.text,
+            correct_answer: q.correctAnswer,
+            choices: choices.sort(() => Math.random() - 0.5),
+          };
+        });
+        setQuestions(scrambleQs);
+      })
+      .catch(err => {
         console.error('Failed to fetch questions:', err);
       });
-  };
+};
+
 
   switch (screen) {
     case 'home':
