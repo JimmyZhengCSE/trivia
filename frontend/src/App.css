@@ -1,32 +1,32 @@
 button {
-    cursor: pointer;
-    padding: 10px 20px;
-    background-color: #C791FF;
-    font-size: 20px;
-    border-radius: 12px;
+  cursor: pointer;
+  padding: 10px 20px;
+  background-color: #C791FF;
+  font-size: 20px;
+  border-radius: 12px;
 }
 
 body, html {
-    margin: 0;
-    background-color: rgb(225, 196, 255);
-    font-size: 20px;
+  margin: 0;
+  background-color: rgb(225, 196, 255);
+  font-size: 20px;
 }
 
 .home-wrapper {
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .home-container {
-    width: 60%;
-    height: 60%;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+  width: 60%;
+  height: 60%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .home-header h1 {
@@ -38,63 +38,85 @@ body, html {
 }
 
 .button-container {
-    margin: 10%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
+  margin: 10%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
 }
 
 .button-container button {
-    min-width: 200px;
-    min-height: 50px;
+  min-width: 200px;
+  min-height: 50px;
 }
 
 #play-button {
-    background-color: cornflowerblue;
+  background-color: cornflowerblue;
+}
+
+#play-together-button {
+  background-color: limegreen;
 }
 
 #settings-button {
-    background-color: red;
+  background-color: red;
 }
 
 .quiz-container {
-    position: relative;
-    padding: 20px;
+  position: relative;
+  padding: 20px;
+}
+
+.quiz-score {
+  position: fixed;
+  top: 10px;
+  right: 20px;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 8px 12px;
+  border-radius: 6px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.5);
+  font-weight: bold;
 }
 
 .quit-button {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    font-size: larger;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: larger;
 }
 
 .results-container {
-    padding: 20px;
+  padding: 20px;
+}
+
+.results-button-container {
+  display: flex;
+  margin-left: auto;
+  gap: 1em;
 }
 
 .home-button {
-    margin-right: 10px;
+  margin-right: 10px;
 }
 
 .review-container {
-    padding:20px;
+  padding: 20px;
+  width: 65%;
 }
 
 .review-choices {
-    list-style: none;
+  list-style: none;
 }
 
 .settings-container {
-    padding: 20px;
+  padding: 20px;
 }
 
 .settings-options-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .difficulty-button-group {
@@ -129,17 +151,17 @@ body, html {
 }
 
 .save-settings {
-    margin-top: 20px;
+  margin-top: 20px;
 }
 
 .noti-text {
-    justify-content: center;
-    display: flex;
-    color: blue;
-    animation: fadeIn 0.5s ease-out;
-    position: absolute;
-    width: 100%;
-    text-align: center;
+  justify-content: center;
+  display: flex;
+  color: blue;
+  animation: fadeIn 0.5s ease-out;
+  position: absolute;
+  width: 100%;
+  text-align: center;
 }
 
 @keyframes fadeIn {
@@ -151,12 +173,232 @@ body, html {
   }
 }
 
-#settings-home {
-    margin-top: 30px;
+#back-button {
+  margin-top: 30px;
+}
+
+#home-button {
+
+}
+
+.back-button-container {
+  display: flex;
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  margin: 20px;
 }
 
 .credits {
-    display: flex;
-    position: absolute;
-    bottom: 20px;
+  display: flex;
+  position: absolute;
+  bottom: 20px;
+}
+
+.container {
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  gap: 0.5rem;
+}
+
+.form-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.form-input-room {
+  margin: 5px;
+  border-radius: 10px;
+  font-size: 20px;
+  height: 30px;
+}
+
+.form-input-name {
+  margin: 5px;
+  border-radius: 10px;
+  font-size: 20px;
+  height: 30px;
+}
+
+form button {
+  display: block;
+}
+
+.chat-header {
+  margin: 0px;
+  border-bottom: 1px solid gray;
+}
+
+.nav-container {
+  background-color: #C791FF;
+  padding: 15px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.nav-home {
+  border-radius: 8px;
+  padding: 2px;
+  color: black;
+}
+
+.nav-home:link, .nav-home:visited {
+  text-decoration: none;
+}
+
+.nav-home:hover {
+  background-color: #ddd;
+}
+
+.nav-home:visited,
+.nav-home:focus,
+.nav-home:active {
+  color: #000;
+  text-decoration: none;
+  outline: none; /* optional: remove focus outline */
+}
+
+.nav-room-code {
+  margin-left: 1em;
+}
+
+.nav-username {
+  margin-left: auto;
+}
+
+.right-container {
+  display: flex;
+  position: fixed;
+  top: 53px;
+  right: 0;
+  height: 100vh;
+  z-index: 100;
+  width: 30%
+}
+
+.players-container {
+  background-color: rgba(0, 0, 0, 0.4);
+  width: 45%;
+  height: 100%;
+  padding: 0.3rem;
+  border-radius: 8px;
+  width: fit-content;
+}
+
+.message-container {
+  background-color: rgba(0, 0, 0, 0.2);
+  width: 55%;
+  height: 100%;
+  padding: 0.3rem;
+  border-radius: 8px;
+}
+
+.chat-messages {
+  height: 75%;
+  overflow-y: auto;
+  border-bottom: 1px solid gray;
+}
+
+.chat-message {
+  margin: 0 0 5px 2px;
+}
+
+.chat-messages::-webkit-scrollbar {
+  width: 4px;
+}
+
+.chat-messages::-webkit-scrollbar-thumb {
+  background-color: #f0f0f0;
+  border-radius: 10px;
+}
+
+.message-input-wrapper {
+  /* position: absolute; */
+  /* bottom: 0; */
+  align-items: center;
+  display: flex;
+  padding: 4px;
+  margin-top: 10px;
+}
+.message-input {
+  width: 80%;
+  resize: none;
+  font-size: 0.8rem;
+  margin: 8px;
+  border-radius: 5px;
+}
+
+.send-message-button {
+  background-color: gray;
+  color: white;
+  padding: 2px;
+}
+
+.player-list {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.player-list th, .player-list td {
+    padding: 0.5rem 1rem;
+    text-align: left;
+}
+
+.player-list th {
+    background: #333;
+    color: white;
+}
+
+.player-list tr:nth-child(even) {
+    background-color: #eaeaea;
+}
+
+.coop-info-container {
+  flex-direction: column;
+}
+
+.typewriter {
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+  border-right: 1px solid;
+  animation: typing 3s steps(30) infinite forwards,
+    blink 1s step-end infinite;
+}
+
+@keyframes typing {
+  0% {
+    width: 0;
+  }
+  70% {
+    width: 90%;
+  }
+  90% {
+    width: 90%;
+  }
+}
+
+@keyframes blink {
+  50% {
+    border-color: transparent;
+  }
+}
+
+@keyframes shrink {
+    from {
+        width: 100%;
+    }
+    to {
+        width: 0%;
+    }
 }

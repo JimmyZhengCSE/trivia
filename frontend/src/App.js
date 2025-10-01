@@ -1,25 +1,34 @@
 import { useState, useEffect } from 'react';
-import HomeScreen from './components/HomeScreen';
-import QuizScreen from './components/QuizScreen';
-import SettingsScreen from './components/SettingsScreen';
+import HomeScreen from './pages/HomeScreen';
+import QuizScreen from './pages/QuizScreen';
+import SettingsScreen from './pages/SettingsScreen';
+import MultiplayerScreen from './pages/MultiplayerScreen';
+import HostScreen from './pages/HostScreen';
+import JoinScreen from './pages/JoinScreen';
+import GameRoom from './pages/GameRoom';
 import './App.css'
+import { Routes, Route, useLocation } from 'react-router-dom';
+import { GameSocketProvider } from './hooks/useGameSocket';
 
 function App() {
-  const [screen, setScreen] = useState('home');
   const [questions, setQuestions] = useState([]);
   
   const [quizSettings, setQuizSettings] = useState(() => {
     const saved = sessionStorage.getItem("quizSettings");
     return saved ? JSON.parse(saved): null;
   });
+  
+  const location = useLocation();
 
   // Fetch questions on first mount
   useEffect(() => {
     fetchQuestions();
+    localStorage.setItem("isHost", "true");
   }, [])
 
+  // Fetch questions when quiz settings change or back at home screen
   useEffect(() => {
-    if (screen === 'home') {
+    if (location.pathname === '/') {
       const saved = sessionStorage.getItem("quizSettings");
       if (saved) {
         const parsed = JSON.parse(saved);
@@ -34,13 +43,7 @@ function App() {
         fetchQuestions(null);
       }
     }
-  }, [screen]);
-
-  useEffect(() => {
-    if (screen === 'home' && quizSettings) {
-      fetchQuestions(quizSettings);
-    }
-  }, [quizSettings])
+  }, [location.pathname, quizSettings]);
 
   const fetchQuestions = (settings) => {
     let url = 'https://the-trivia-api.com/v2/questions';
@@ -69,19 +72,21 @@ function App() {
       .catch(err => {
         console.error('Failed to fetch questions:', err);
       });
-};
+  };
 
-
-  switch (screen) {
-    case 'home':
-      return <HomeScreen setScreen={setScreen} />;
-    case 'quiz':
-      return <QuizScreen questions={questions} setScreen={setScreen} />;
-    case 'settings':
-      return <SettingsScreen setScreen={setScreen} />;
-    default:
-      return null;
-  }
+  return (
+      <GameSocketProvider>
+      <Routes>
+        <Route path='/' element={<HomeScreen />}/>
+        <Route path='/quiz' element={<QuizScreen questions={questions}/>}/>
+        <Route path='/settings' element={<SettingsScreen />}/>
+        <Route path='/multiplayer' element={<MultiplayerScreen />}/>
+        <Route path='/host' element={<HostScreen />}/>
+        <Route path='/join' element={<JoinScreen />}/>
+        <Route path='/game/:code' element={<GameRoom />} />
+      </Routes>
+      </GameSocketProvider>
+  )
 }
 
 export default App;
