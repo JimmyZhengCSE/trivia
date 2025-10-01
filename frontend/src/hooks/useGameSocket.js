@@ -9,6 +9,8 @@ const socket = io(
     : process.env.REACT_APP_SERVER_API
 );
 
+console.log("NODE_ENV:", process.env.NODE_ENV);
+
 export function GameSocketProvider({ children }) {
     const [name, setName] = useState("");
     const [players, setPlayers] = useState([]);
